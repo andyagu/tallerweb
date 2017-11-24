@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>AJAX DESDE CERO</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom fonts for this template -->
+    <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href='https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+
+    <!-- Custom styles for this template -->
+    <link href="css/clean-blog.min.css" rel="stylesheet">
+
+  </head>
+
+  <body>
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light fixed-top" id="mainNav">
+      <div class="container">
+        <img class="img-thumbnail" src= img/LogoHorizontal.png alt="" width="10%" height="20%">
+        <a class="navbar-brand" href="index.html">Universidad Piloto de Colombia</a>
+        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          Menu
+          <i class="fa fa-bars"></i>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="index.html">Inicio</a>
+            </li>
+            
+            <li class="nav-item">
+              <a class="nav-link" href="about.html">Información</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Page Header -->
+    <header class="masthead" style="background-image: url('img/cod.jpg')">
+      <div class="overlay"></div>
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8 col-md-10 mx-auto">
+            <div class="post-heading">
+              <h1>   AJAX DESDE CERO</h1>
+              <h2 class="subheading">Información básica Curso "Tutorial básico del programador web: Ajax desde cero".</h2>
+              <span class="meta">Tutorial por
+                <a href="#">Daniela Castro</a>
+                en Septiembre 24, 2017</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- Post Content -->
+    <article>
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8 col-md-10 mx-auto">
+           
+            <h2 class="section-heading">Introducción a AJAX</h2>
+
+            <p>El concepto de AJAX se presentó por primera vez en el artículo "Ajax: A New Approach to Web Applications" publicado por Jesse James Garrett el 18 de Febrero de 2005. Hasta ese momento, no existía un término normalizado que hiciera referencia a un nuevo tipo de aplicación web que estaba apareciendo.</p>
+
+            <p>El término AJAX es un acrónimo de Asynchronous JavaScript + XML, que se puede traducir como "JavaScript asíncrono + XML".</p>
+
+            <p>El artículo define AJAX de la siguiente forma:</p>
+
+            <blockquote class="blockquote">"Ajax no es una tecnología en sí mismo. En realidad, se trata de varias tecnologías independientes que se unen de formas nuevas y sorprendentes."</blockquote>
+
+            <p>Las tecnologías que forman AJAX son:</p>
+
+            <p>* XHTML y CSS, para crear una presentación basada en estándares.</p>
+
+            <p>* DOM, para la interacción y manipulación dinámica de la presentación.</p>
+
+            <p>* XML, XSLT y JSON, para el intercambio y la manipulación de información.</p>
+
+            <p>* XMLHttpRequest, para el intercambio asíncrono de información.</p>
+
+            <p>* JavaScript, para unir todas las demás tecnologías.</p>
+            <hr>
+            <h2 class="section-heading">VENTAJAS</h2>
+            <P>* Utiliza tecnologías ya existentes.</P>
+            <P>* Soportada por la mayoría de los navegadores modernos.</P>
+            <P>* Interactividad.El usuario no tiene que esperar hasta que llegen los datos del servidor.</P>
+            <P>* Portabilidad (no requiere plug-in como Flash)</P>
+            <P>* Mayor velocidad, esto debido que no hay que retornar toda la página nuevamente.</P>
+            <P>* La página se asemeja a una aplicación de escritorio.</P>
+            <hr>
+            <H2 class="section-heading">DESVENTAJAS</H2>
+            <p>* Se pierde el concepto de volver a la página anterior.</p>
+            <p>* Si se guarda en favoritos no necesariamente al visitar nuevamente el sitio se ubique donde nos encontrabamos al grabarla.</p>
+            <p>* La existencia de páginas con AJAX y otras sin esta tecnología hace que el usuario se desoriente.</p>
+            <p>* Problemas con navegadores antiguos que no implementan esta tecnología.</p>
+            <p>* No funciona si el usuario tiene desactivado el JavaScript en su navegador.</p>
+            <p>* Requiere programadores que conozcan todas las tecnologías que intervienen en AJAX.</p>
+            <p>* Dependiendo de la carga del servidor podemos experimentar tiempos tardíos de respuesta que desconciertan al visitante.</p>
+            <hr>
+            <h2 class="section-heading">EJEMPLO CON AJAX</h2>
+            <P>Se elabora un ejemplo donde veremos que aparecen muchos conceptos, no se preocupe si no los comprende en su totalidad ya que los mismos se verán en forma detallada a lo largo de este tutorial.</P>
+            <P>La idea fundamental de este ejercicio es conocer como debemos estructurar nuestras páginas y ver que introduce AJAX.</P>
+
+            <P>Elaboraremos un problema muy sencillo, imaginemos que tenemos una lista de hipervínculos con los distintos signos del horóscopo y queremos que al ser presionado no recargue la página completa sino que se envíe una petición al servidor y el mismo retorne la información de dicho signo, luego se actualice solo el contenido de un div del archivo HTML.</P>
+            <p>pagina1.html</p>
+<textarea name="codigo" rows="30" cols="60">
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Problema</title>
+  <script src="funciones.js"></script>
+  <link href="estilos.css" rel="StyleSheet" type="text/css">
+</head>
+
+<body>
+<h1>Signos del horóscopo.</h1>
+<div id="menu">
+    <p><a id="enlace1" href="pagina1.php?cod=1">Aries</a></p>
+    <p><a id="enlace2" href="pagina1.php?cod=2">Tauro</a></p>
+    <p><a id="enlace3" href="pagina1.php?cod=3">Geminis</a></p>
+    <p><a id="enlace4" href="pagina1.php?cod=4">Cancer</a></p>
+    <p><a id="enlace5" href="pagina1.php?cod=5">Leo</a></p>
+    <p><a id="enlace6" href="pagina1.php?cod=6">Virgo</a></p>
+    <p><a id="enlace7" href="pagina1.php?cod=7">Libra</a></p>
+    <p><a id="enlace8" href="pagina1.php?cod=8">Escorpio</a></p>
+    <p><a id="enlace9" href="pagina1.php?cod=9">Sagitario</a></p>
+    <p><a id="enlace10" href="pagina1.php?cod=10">Capricornio</a></p>
+    <p><a id="enlace11" href="pagina1.php?cod=11">Acuario</a></p>
+    <p><a id="enlace12" href="pagina1.php?cod=12">Piscis</a></p>
+</div>
+<div id="detalles">Seleccione su signo.</div>
+</body>
+</html>    
+            
+</textarea> 
+          <p>El segundo archivo contiene las reglas de estilo que se definen para el archivo HTML:</p>
+
+            <p>estilos.css</p>
+<textarea rows="43" cols="50">
+    #menu {
+  font-family: Arial;
+  margin:5px;
+}
+
+#menu p {
+  margin:0px;
+  padding:0px;
+}
+
+#menu a {
+  display: block;
+  padding: 3px;
+  width: 160px;
+  background-color: #f7f8e8;
+  border-bottom: 1px solid #eee;
+  text-align:center;
+}
+
+#menu a:link, #menu a:visited {
+  color: #f00;
+  text-decoration: none;
+}
+
+#menu a:hover {
+  background-color: #369;
+  color: #fff;
+}
+
+#detalles {
+  background-color:#ffc;
+  text-align:left;
+  font-family:verdana;
+  border-width:0;
+  padding:5px;
+  border: 1px dotted #fa0;
+  margin:20px;
+  border-radius: 5px;
+  box-shadow: 0px 0px 20px #aaa;  
+}
+</textarea>
+
+
+            <p>Ahora viene uno de los puntos claves donde debemos prestar más atención, esto se encuentra en las rutinas JavaScript que debemos implementar para comunicarnos con el servidor, además de lo ya conocido de DHTML para añadir elementos HTML en forma dinámica.</p>
+            <p>Veamos el archivo en su totalidad y expliquemos en forma muy global (recuerde que a lo largo de este curso iremos profundizando todos estos conceptos de comunicación con el servidor):</p>
+
+            <p>funciones.js</p>
+<textarea rows="40" cols="45">
+  addEventListener('load',inicializarEventos,false);
+
+function inicializarEventos()
+{
+  for(var f=1;f<=12;f++)
+  {
+    var ob=document.getElementById('enlace'+f);
+    ob.addEventListener('click',presionEnlace,false);
+  }
+}
+
+function presionEnlace(e)
+{
+    e.preventDefault();
+    var url=e.target.getAttribute('href');
+    cargarHoroscopo(url); 
+}
+
+var conexion1;
+function cargarHoroscopo(url) 
+{
+  conexion1=new XMLHttpRequest();  
+  conexion1.onreadystatechange = procesarEventos;
+  conexion1.open("GET", url, true);
+  conexion1.send();
+}
+
+function procesarEventos()
+{
+  var detalles = document.getElementById("detalles");
+  if(conexion1.readyState == 4)
+  {
+    detalles.innerHTML = conexion1.responseText;
+  } 
+  else 
+  {
+    detalles.innerHTML = 'Cargando...';
+  }
+}
+</textarea>
+            <p>Lo primero que se ejecuta es la llamada a la función inicializarEventos() inmediatamente luego que la página se a cargado por completo en el navegador:</p>
+            <textarea rows="10" cols="45">
+
+function inicializarEventos()
+{
+  for(var f=1;f<=12;f++){
+    var ob=document.getElementById('enlace'+f);
+    ob.addEventListener('click',presionEnlace,false);
+  }
+}</textarea>
+          <p>En esta función registramos el evento click para los doce enlaces de los signos del horóscopo. Para facilitar la codificación recordemos que todos tienen casi el mismo nombre, difieren por un número al final. Luego dentro de un for rescatamos la referencia a cada enlace y registramos el evento click indicando que se debe llamar a la función presionEnlace.</p>
+          <p>La función presión enlace:</p>
+<textarea rows="7" cols="45">
+  function presionEnlace(e)
+{
+    e.preventDefault();
+    var url=e.target.getAttribute('href');
+    cargarHoroscopo(url); 
+}
+</textarea>
+          <p>Primero desactivamos el evento por defecto para el hipervínculo, luego llama a la función cargarHoroscopo pasándole como referencia la url que contiene el hipervínculo.</p>
+          <p>Veamos ahora la función cargarHoroscopo:</p>
+
+<textarea rows="9" cols="47">
+  var conexion1;
+function cargarHoroscopo(url) 
+{
+  conexion1=new XMLHttpRequest();  
+  conexion1.onreadystatechange = procesarEventos;
+  conexion1.open("GET", url, true);
+  conexion1.send();
+}
+</textarea>
+            <p>Previo a la definición de esta función definimos una variable global llamada conexion1 que será utilizada en esta y la siguiente función.</p>
+            <p>La función recibe como parámetro la url a la que debe hacer la petición de datos.</p>
+            <p>Lo primero que hacemos es crear un objeto de la clase XMLHttpRequest (luego veremos que este objeto nos permite comunicarnos con el servidor de forma asincrónica):</p>
+<textarea rows="2" cols="45">conexion1=new XMLHttpRequest();</textarea>
+            <p>La propiedad onreadystatechange se inicializa con la referencia de una función que será la encargada de procesar los datos enviados por el servidor, veremos el código de esta función más adelante.</p>
+
+            <p>Seguidamente llamamos al método open que tiene tres parámetros:</p>
+
+            <p>Primero el método de envío de datos (GET o POST) Recordemos que si los datos se envían como parámetros (como es nuestro ejemplo) debemos indicar que utilizamos el método GET</p>
+            <p>El segundo parámetro es la url y la página que procesará los datos que le eviemos.</p>
+            <p>El tercer parámetro indicamos si se procesarán los datos de forma asíncrona (true) o síncrona (false)</p>
+            <p>Por último nos falta llamar al método send para que comience el proceso:</p>
+<textarea rows="2" cols="45">  conexion1.send();</textarea>
+            <p>Nos queda explicar la función procesarEventos que se ejecuta cada vez que el objeto conexion1 de la clase XMLHttpRequest cambia de estado. Tengamos en cuenta que los estados posibles de este objeto son:</p>
+            <p>0 No inicializado.</p>
+            <p>1 Cargando.</p>
+            <p>2 Cargado.</p>
+            <p>3 Interactivo.</p>
+            <p>4 Completado.</p>
+            <p>Para conocer el estado del objeto debemos acceder a la propiedad readyState que almacena alguno de los cinco valores que enunciamos.</p>
+            <p>Nuestra función procesarEventos es:</p>
+<textarea rows="13" cols="45">
+  function procesarEventos()
+{
+  var detalles = document.getElementById("detalles");
+  if(conexion1.readyState == 4)
+  {
+    detalles.innerHTML = conexion1.responseText;
+  } 
+  else 
+  {
+    detalles.innerHTML = 'Cargando...';
+  }
+}</textarea>
+          <p>Decíamos que cuando la propiedad readyState almacena 4 significa que todos los datos han llegado desde el servidor, luego mediante el método responseText recuperamos la información enviada por el servidor. Luego cualquier otro valor que contenga la propiedad readyState mostramos dentro del div el mensaje 'cargando...'.</p>
+
+          <p>Es seguro que muchas dudas han surgido de este primer pantallazo de AJAX, pero no se preocupe a medida que avancemos en el curso se irán aclarando e internalizando.</p>
+
+          <p>Pero todavía nos queda la página que contiene el programa en el servidor, en nuestro caso empleamos el lenguaje PHP (tener en cuenta que podemos emplear otro lenguaje de servidor para esto)</p>
+          <p>Veamos el código de esta página:</p>
+<textarea rows="50" cols="70">
+  <?php
+header('Content-Type: text/html; charset=utf-8');
+if ($_REQUEST['cod']==1)
+  echo "<strong>Aries:</strong> Hoy los cambios serán físicos, personales, de carácter, Te sentirás impulsivo y tomarás  iniciativas. Período en donde considerarás unirte a agrupaciones de beneficencia, o de ayuda a los demás.";
+if ($_REQUEST['cod']==2)
+  echo "<strong>Tauro:</strong> Hoy los cambios serán privados, íntimos. Recuerdos. Ayuda, solidaridad. Asuntos en lugares de retiro. Tu cónyuge puede aportar buen status a tu vida o apoyo a tu profesión.";
+if ($_REQUEST['cod']==3)
+  echo "<strong>Géminis:</strong> Los asuntos de hoy tienen que ver con las amistades, reuniones, actividades con ellos. Día esperanzado, ilusiones. Mucha energía sexual y fuerza emocional. Deseos difíciles de controlar.";
+if ($_REQUEST['cod']==4)
+  echo "<strong>Cancer:</strong> Este día la profesión y las relaciones con superiores y con tu madre serán de importancia. Actividad en relación a estos temas. Momentos positivos con compañeros de trabajo. Actividad laboral agradable.";
+if ($_REQUEST['cod']==5)
+  echo "<strong>Leo:</strong> Este día los estudios, los viajes, el extranjero y la espiritualidad serán lo importante. Pensamientos, religión y filosofía también. Vivencias kármicas de la época te vuelven responsable tomando decisiones.";
+if ($_REQUEST['cod']==6)
+  echo "<strong>Virgo:</strong> Para este día toma importancia tu vida sexual, tal vez miedos, temas legales, juicios o herencias. Experiencias extrañas. Hay karma de prueba durante este período en tu parte psicológica, generándose algunos replanteos.";
+if ($_REQUEST['cod']==7)
+  echo "<strong>Libra:</strong> Hoy todo asunto tiene que ver con tu pareja, también con socios, con la gente o el público. Ellos serán lo más importante del día. Ganancias a través de especulaciones o del juego. Actividades vocacionales artísticas.";
+if ($_REQUEST['cod']==8)
+  echo "<strong>Escorpio:</strong> Hoy todo asunto tiene que ver con temas de trabajo y de salud. Presta atención a ambos. Experiencias diversas con compañeros. Durante este período tendrás muchos recursos para ganar dinero.";
+if ($_REQUEST['cod']==9)
+  echo "<strong>Sagitario:</strong> Durante este día se vivirán cambios en relación a los noviazgos o a los hijos. Creatividad, actividad, diversiones y salidas. Período de encuentros con personas o situaciones que te impresionan.";
+if ($_REQUEST['cod']==10)
+  echo "<strong>Capricornio:</strong> Los cambios del día tienen que ver con tu hogar, con la convivencia y con el padre. Asuntos relativos al carácter en la convivencia. El karma de responsabilidad de estos momentos te acercará al mundo de lo desconocido, mucha madurez y contacto con el más allá.";
+if ($_REQUEST['cod']==11)
+  echo "<strong>Acuario:</strong> Hoy todo asunto tiene que ver con el entorno inmediato, hermanos y vecinos, con la comunicación, los viajes cortos o traslados frecuentes. El hablar y trasladarse será importante hoy. Mentalidad e ideas activas.";
+if ($_REQUEST['cod']==12)
+  echo "<strong>Piscis:</strong> Durante este día se vivirán cambios en la economía, movimientos en los ingresos, negocios, valores. Momentos de gran fuerza y decisión profesionales, buscarás el liderazgo.";
+?>
+</textarea>
+          <p>Mediante el vector asociativo $_REQUEST recuperamos el valor del parámetro cod y mediante una serie de if verificamos si almacena el valor 1 procedemos a generar un texto referente al signo Aries, si tiene un 2 generamos un texto referente al signo Tauro y así sucesivamente.</p>
+          <p>Hay que tener en cuenta que no se estará enviando una página HTML completa, por eso no tiene los elementos Head, Body etc. sino es más bien un archivo de texto que luego será añadido en forma dinámica al div de la página HTML.</p>
+          <p>Debe quedar claro que los datos se podrían haber rescatado perfectamente de una base de datos, pero por simplicidad hemos dispuesto estos 12 if y generado el texto respectivo. Veremos más adelante problemas que acceden a bases de datos.</p>
+          <p>Hasta acá el primer problema de AJAX. Le recomiendo pasar a la sección de "Problemas Resueltos" y ejecutar este ejercicio, releer nuevamente estos conceptos y tratar de hacer modificaciones sencillas al problema.</p>
+          <h2 class="section-heading">Problema resuelto.</h2>
+          <p>Confeccionar un problema que muestre una lista de hipervínculos con los distintos signos del horóscopo y luego al ser presionado no recargue la página completa sino que se envíe una petición al servidor y el mismo retorne la información de dicho signo, luego se actualice solo el contenido de un div del archivo HTML.</p>
+          <p>Para ver que solo se modifica el div "detalles" puede agregar otros elementos a la página haciéndola mas compleja (por ejemplo agregue 20 títulos h1) Observe luego que al presionar el hipervínculo solo se actualiza el div "detalles", sin el parpadeo de la página que ocurre cuando recargamos una página HTML completamente.</p>
+          <p>pagina1.html</p>
+<textarea rows="30" cols="60">
+  <!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Problema</title>
+  <script src="funciones.js"></script>
+  <link href="estilos.css" rel="StyleSheet" type="text/css">
+</head>
+
+<body>
+<h1>Signos del horóscopo.</h1>
+<div id="menu">
+    <p><a id="enlace1" href="pagina1.php?cod=1">Aries</a></p>
+    <p><a id="enlace2" href="pagina1.php?cod=2">Tauro</a></p>
+    <p><a id="enlace3" href="pagina1.php?cod=3">Geminis</a></p>
+    <p><a id="enlace4" href="pagina1.php?cod=4">Cancer</a></p>
+    <p><a id="enlace5" href="pagina1.php?cod=5">Leo</a></p>
+    <p><a id="enlace6" href="pagina1.php?cod=6">Virgo</a></p>
+    <p><a id="enlace7" href="pagina1.php?cod=7">Libra</a></p>
+    <p><a id="enlace8" href="pagina1.php?cod=8">Escorpio</a></p>
+    <p><a id="enlace9" href="pagina1.php?cod=9">Sagitario</a></p>
+    <p><a id="enlace10" href="pagina1.php?cod=10">Capricornio</a></p>
+    <p><a id="enlace11" href="pagina1.php?cod=11">Acuario</a></p>
+    <p><a id="enlace12" href="pagina1.php?cod=12">Piscis</a></p>
+</div>
+<div id="detalles">Seleccione su signo.</div>
+</body>
+</html>
+</textarea>
+          <p>estilos.css</p>
+<textarea rows="30" cols="60">
+  
+#menu {
+  font-family: Arial;
+  margin:5px;
+}
+
+#menu p {
+  margin:0px;
+  padding:0px;
+}
+
+#menu a {
+  display: block;
+  padding: 3px;
+  width: 160px;
+  background-color: #f7f8e8;
+  border-bottom: 1px solid #eee;
+  text-align:center;
+}
+
+#menu a:link, #menu a:visited {
+  color: #f00;
+  text-decoration: none;
+}
+
+#menu a:hover {
+  background-color: #369;
+  color: #fff;
+}
+
+#detalles {
+  background-color:#ffc;
+  text-align:left;
+  font-family:verdana;
+  border-width:0;
+  padding:5px;
+  border: 1px dotted #fa0;
+  margin:20px;
+  border-radius: 5px;
+  box-shadow: 0px 0px 20px #aaa;  
+}
+
+</textarea>
+
+<p>funciones.js</p>
+<textarea rows="30" cols="60">
+  
+  addEventListener('load',inicializarEventos,false);
+
+function inicializarEventos()
+{
+  for(var f=1;f<=12;f++)
+  {
+    var ob=document.getElementById('enlace'+f);
+    ob.addEventListener('click',presionEnlace,false);
+  }
+}
+
+function presionEnlace(e)
+{
+    e.preventDefault();
+    var url=e.target.getAttribute('href');
+    cargarHoroscopo(url); 
+}
+
+var conexion1;
+function cargarHoroscopo(url) 
+{
+  conexion1=new XMLHttpRequest();  
+  conexion1.onreadystatechange = procesarEventos;
+  conexion1.open("GET", url, true);
+  conexion1.send();
+}
+
+function procesarEventos()
+{
+  var detalles = document.getElementById("detalles");
+  if(conexion1.readyState == 4)
+  {
+    detalles.innerHTML = conexion1.responseText;
+  } 
+  else 
+  {
+    detalles.innerHTML = 'Cargando...';
+  }
+}
+
+
+</textarea>
+
+            <p>pagina1.php</p>
+<textarea rows="30" cols="60">
+  
+  <?php
+header('Content-Type: text/html; charset=utf-8');
+if ($_REQUEST['cod']==1)
+  echo "<strong>Aries:</strong> Hoy los cambios serán físicos, personales, de carácter, Te sentirás impulsivo y tomarás  iniciativas. Período en donde considerarás unirte a agrupaciones de beneficencia, o de ayuda a los demás.";
+if ($_REQUEST['cod']==2)
+  echo "<strong>Tauro:</strong> Hoy los cambios serán privados, íntimos. Recuerdos. Ayuda, solidaridad. Asuntos en lugares de retiro. Tu cónyuge puede aportar buen status a tu vida o apoyo a tu profesión.";
+if ($_REQUEST['cod']==3)
+  echo "<strong>Géminis:</strong> Los asuntos de hoy tienen que ver con las amistades, reuniones, actividades con ellos. Día esperanzado, ilusiones. Mucha energía sexual y fuerza emocional. Deseos difíciles de controlar.";
+if ($_REQUEST['cod']==4)
+  echo "<strong>Cancer:</strong> Este día la profesión y las relaciones con superiores y con tu madre serán de importancia. Actividad en relación a estos temas. Momentos positivos con compañeros de trabajo. Actividad laboral agradable.";
+if ($_REQUEST['cod']==5)
+  echo "<strong>Leo:</strong> Este día los estudios, los viajes, el extranjero y la espiritualidad serán lo importante. Pensamientos, religión y filosofía también. Vivencias kármicas de la época te vuelven responsable tomando decisiones.";
+if ($_REQUEST['cod']==6)
+  echo "<strong>Virgo:</strong> Para este día toma importancia tu vida sexual, tal vez miedos, temas legales, juicios o herencias. Experiencias extrañas. Hay karma de prueba durante este período en tu parte psicológica, generándose algunos replanteos.";
+if ($_REQUEST['cod']==7)
+  echo "<strong>Libra:</strong> Hoy todo asunto tiene que ver con tu pareja, también con socios, con la gente o el público. Ellos serán lo más importante del día. Ganancias a través de especulaciones o del juego. Actividades vocacionales artísticas.";
+if ($_REQUEST['cod']==8)
+  echo "<strong>Escorpio:</strong> Hoy todo asunto tiene que ver con temas de trabajo y de salud. Presta atención a ambos. Experiencias diversas con compañeros. Durante este período tendrás muchos recursos para ganar dinero.";
+if ($_REQUEST['cod']==9)
+  echo "<strong>Sagitario:</strong> Durante este día se vivirán cambios en relación a los noviazgos o a los hijos. Creatividad, actividad, diversiones y salidas. Período de encuentros con personas o situaciones que te impresionan.";
+if ($_REQUEST['cod']==10)
+  echo "<strong>Capricornio:</strong> Los cambios del día tienen que ver con tu hogar, con la convivencia y con el padre. Asuntos relativos al carácter en la convivencia. El karma de responsabilidad de estos momentos te acercará al mundo de lo desconocido, mucha madurez y contacto con el más allá.";
+if ($_REQUEST['cod']==11)
+  echo "<strong>Acuario:</strong> Hoy todo asunto tiene que ver con el entorno inmediato, hermanos y vecinos, con la comunicación, los viajes cortos o traslados frecuentes. El hablar y trasladarse será importante hoy. Mentalidad e ideas activas.";
+if ($_REQUEST['cod']==12)
+  echo "<strong>Piscis:</strong> Durante este día se vivirán cambios en la economía, movimientos en los ingresos, negocios, valores. Momentos de gran fuerza y decisión profesionales, buscarás el liderazgo.";
+?>
+
+</textarea>
+<a href="http://www.scratchya.com.ar/problemas/ajaxya2/resu/9/pagina1.html">Ejecutar Ejemplo</a>
+            <hr>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <hr>
+
+    <!-- Footer -->
+    <footer>
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-8 col-md-10 mx-auto">
+            <ul class="list-inline text-center">
+              <li class="list-inline-item">
+                <a href="#">
+                  <span class="fa-stack fa-lg">
+                    <i class="fa fa-circle fa-stack-2x"></i>
+                    <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+              <li class="list-inline-item">
+                <a href="#">
+                  <span class="fa-stack fa-lg">
+                    <i class="fa fa-circle fa-stack-2x"></i>
+                    <i class="fa fa-facebook fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+              <li class="list-inline-item">
+                <a href="#">
+                  <span class="fa-stack fa-lg">
+                    <i class="fa fa-circle fa-stack-2x"></i>
+                    <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                  </span>
+                </a>
+              </li>
+            </ul>
+            <p class="copyright text-muted">Copyright &copy; Your Website 2017</p>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Bootstrap core JavaScript -->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Custom scripts for this template -->
+    <script src="js/clean-blog.min.js"></script>
+
+  </body>
+
+</html>
